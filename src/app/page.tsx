@@ -1,16 +1,15 @@
+import { AnimatedHeroIntro } from "@/components/animated-hero-intro";
+import { AnimatedResumeSnapshot } from "@/components/animated-resume-snapshot";
 import { ProjectCarousel } from "@/components/project-carousel";
+import { AuroraBackground } from "@/components/ui/starfall-portfolio-landing";
 
 const projects = [
   {
     title: "OpsLens",
     label: "Agentic DevOps Platform",
     description:
-      "AI-powered incident analysis platform with a Next.js frontend and Spring Boot backend for centralized log ingestion, filtering, and error investigation.",
-    highlights: [
-      "Designed a FastAPI and LangGraph multi-agent workflow to analyze logs, identify root causes, and generate fix recommendations.",
-      "Containerized multi-service development with Docker and Docker Compose.",
-      "Automated build and test workflows with GitHub Actions and Bash scripts.",
-    ],
+      "OpsLens is an AI agent-based operations analysis tool that monitors production errors in real time. It helps identify where the issue happened, analyze the possible causes, and suggest what actions to take next.",
+    highlights: ["Multi-agent log analysis with fix recommendations."],
     stack: ["Spring Boot", "FastAPI", "LangGraph", "Docker", "GitHub Actions"],
     href: "https://github.com/Jake6654",
     glowColor: "green" as const,
@@ -19,13 +18,11 @@ const projects = [
     title: "SketchMyDay",
     label: "AI Journaling Platform",
     description:
-      "AI-powered journaling platform using Spring Boot and RESTful APIs to manage diary entries and AI-generated illustrations.",
+      "SketchMyDay is an AI-driven journaling application that transforms users' diary entries into illustrated cartoon panels. I built the entire system end-to-end using Next.js, Spring Boot, Supabase, and a separate FastAPI-based AI service running on a GPU VM.",
     highlights: [
-      "Integrated a FastAPI-based Python AI service for diary analysis and image generation.",
-      "Used Redis for asynchronous task handling between backend and AI services.",
-      "Connected the platform to the OpsLens centralized logging system.",
+      "End-to-end AI journaling system with a separate GPU-backed FastAPI service.",
     ],
-    stack: ["Spring Boot", "Next.js", "TypeScript", "AWS", "PostgreSQL"],
+    stack: ["Next.js", "Spring Boot", "Supabase", "FastAPI", "GPU VM"],
     href: "https://github.com/Jake6654",
     glowColor: "blue" as const,
   },
@@ -101,8 +98,18 @@ const experience = [
 ];
 
 const certifications = [
-  "AWS Certified Solutions Architect / Jan 2025 - Jan 2028",
-  "AWS Certified Cloud Practitioner / Sep 2023 - Jan 2028",
+  {
+    name: "AWS Certified Solutions Architect - Associate",
+    period: "Jan 2025 - Jan 2028",
+    validationNumber: "8106a343a5d546c79d94514d7d2f6ce1",
+    href: "https://aws.amazon.com/verification",
+  },
+  {
+    name: "AWS Certified Cloud Practitioner",
+    period: "Sep 2023 - Jan 2028",
+    validationNumber: "7HKYMW0C7M41QR3W",
+    href: "https://aws.amazon.com/verification",
+  },
 ];
 
 const skillGroups = [
@@ -112,43 +119,73 @@ const skillGroups = [
   },
   {
     title: "Frameworks",
-    items: ["Next.js", "React.js", "Django", "Pandas", "Gradle", "PyTorch", "Tailwind CSS"],
+    items: [
+      "Next.js",
+      "React.js",
+      "Django",
+      "Pandas",
+      "Gradle",
+      "PyTorch",
+      "Tailwind CSS",
+    ],
   },
   {
     title: "Tools",
-    items: ["AWS", "GitHub", "Docker", "Kubernetes", "Jira", "Confluence", "Jupyter Notebook"],
+    items: [
+      "AWS",
+      "GitHub",
+      "Docker",
+      "Kubernetes",
+      "Jira",
+      "Confluence",
+      "Jupyter Notebook",
+    ],
   },
 ];
 
 const contactLinks = [
-  { label: "Email", value: "jaehyukc1223@gmail.com", href: "mailto:jaehyukc1223@gmail.com" },
-  { label: "Phone", value: "(434) 227-0820", href: "tel:+14342270820" },
-  { label: "GitHub", value: "github.com/Jake6654", href: "https://github.com/Jake6654" },
-  { label: "LinkedIn", value: "LinkedIn", href: "https://www.linkedin.com/" },
+  {
+    label: "Email",
+    value: "jaehyukc1223@gmail.com",
+    href: "mailto:jaehyukc1223@gmail.com",
+  },
+  { label: "Phone", value: "(202) 557-6886", href: "tel:+12025576886" },
+  {
+    label: "GitHub",
+    value: "github.com/Jake6654",
+    href: "https://github.com/Jake6654",
+  },
+  {
+    label: "LinkedIn",
+    value: "LinkedIn",
+    href: "https://www.linkedin.com/in/jae-hyuk-chang-953724321/",
+  },
 ];
 
 export default function Home() {
   return (
-    <main className="min-h-screen bg-[#f5f6f0] text-[#18211b]">
-      <header className="sticky top-0 z-20 border-b border-[#d9ded2] bg-[#f5f6f0]/90 backdrop-blur">
+    <main className="relative min-h-screen overflow-hidden bg-[#101711] text-[#18211b]">
+      <AuroraBackground />
+      <div className="pointer-events-none fixed inset-0 z-0 bg-[radial-gradient(circle_at_top_left,rgba(129,178,141,0.24),transparent_34%),linear-gradient(180deg,rgba(10,17,12,0.28)_0%,rgba(10,17,12,0.42)_100%)]" />
+      <header className="sticky top-0 z-20 border-b border-white/15 bg-[#101711]/60 text-white backdrop-blur-xl">
         <div className="mx-auto flex w-full max-w-7xl items-center justify-between px-5 py-5 sm:px-8">
           <a href="#top" className="text-sm font-bold tracking-[0.18em]">
             JAE-HYUK CHANG
           </a>
           <nav
             aria-label="Main navigation"
-            className="hidden items-center gap-7 text-sm font-medium text-[#566153] md:flex"
+            className="hidden items-center gap-7 text-sm font-medium text-white/70 md:flex"
           >
-            <a className="transition hover:text-[#18211b]" href="#projects">
+            <a className="transition hover:text-white" href="#projects">
               Projects
             </a>
-            <a className="transition hover:text-[#18211b]" href="#experience">
+            <a className="transition hover:text-white" href="#experience">
               Experience
             </a>
-            <a className="transition hover:text-[#18211b]" href="#skills">
+            <a className="transition hover:text-white" href="#skills">
               Skills
             </a>
-            <a className="transition hover:text-[#18211b]" href="#contact">
+            <a className="transition hover:text-white" href="#contact">
               Contact
             </a>
           </nav>
@@ -157,66 +194,16 @@ export default function Home() {
 
       <section
         id="top"
-        className="mx-auto grid w-full max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:py-20 xl:grid-cols-[1.15fr_0.85fr]"
+        className="relative z-10 mx-auto grid min-h-[calc(100vh-65px)] w-full max-w-7xl gap-10 px-5 py-14 sm:px-8 lg:py-20 xl:grid-cols-[1.15fr_0.85fr]"
       >
-        <div className="flex flex-col justify-center">
-          <p className="mb-5 w-fit border border-[#cbd8c2] bg-white px-3 py-1.5 text-sm font-semibold uppercase tracking-[0.14em] text-[#7a5349]">
-            Full-stack developer / UVA Computer Science
-          </p>
-          <h1 className="max-w-4xl text-5xl font-semibold leading-[1.04] text-[#111711] sm:text-6xl lg:text-6xl xl:text-7xl">
-            Building AI-powered web platforms with cloud-ready engineering.
-          </h1>
-          <p className="mt-7 max-w-3xl text-lg leading-8 text-[#4f5a4d]">
-            I am Jae-Hyuk Chang, a Computer Science student at the University of
-            Virginia focused on full-stack development, cloud computing, and AI-driven
-            product experiences. My work spans Next.js frontends, Spring Boot and
-            FastAPI backends, Dockerized services, and AWS-oriented systems.
-          </p>
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-            <a
-              className="inline-flex h-12 items-center justify-center bg-[#1f6f5b] px-6 text-sm font-semibold text-white transition hover:bg-[#185846]"
-              href="#projects"
-            >
-              View Projects
-            </a>
-            <a
-              className="inline-flex h-12 items-center justify-center border border-[#bfc8ba] bg-white px-6 text-sm font-semibold text-[#18211b] transition hover:border-[#1f6f5b]"
-              href="#contact"
-            >
-              Contact Me
-            </a>
-          </div>
-        </div>
-
-        <aside className="min-w-0 border border-[#d9ded2] bg-white p-6 shadow-[0_24px_80px_rgba(24,33,27,0.08)]">
-          <p className="text-sm font-bold uppercase tracking-[0.14em] text-[#7a5349]">
-            Resume snapshot
-          </p>
-          <div className="mt-5 space-y-5">
-            <div>
-              <p className="text-3xl font-semibold">University of Virginia</p>
-              <p className="mt-2 text-sm leading-6 text-[#566153]">
-                BS in Computer Science, May 2026
-              </p>
-            </div>
-            <div className="grid gap-3 sm:grid-cols-2 lg:grid-cols-1">
-              <div className="border border-[#e1e6dc] bg-[#f5f6f0] p-4">
-                <p className="text-2xl font-semibold">5,000+</p>
-                <p className="mt-1 text-sm text-[#566153]">members supported through admin dashboard work</p>
-              </div>
-              <div className="border border-[#e1e6dc] bg-[#f5f6f0] p-4">
-                <p className="text-2xl font-semibold">AWS</p>
-                <p className="mt-1 text-sm text-[#566153]">Solutions Architect and Cloud Practitioner</p>
-              </div>
-            </div>
-            <p className="break-words border-t border-[#e1e6dc] pt-5 text-sm leading-6 text-[#566153]">
-              Next.js / React / TypeScript / Spring Boot / FastAPI / AWS / Docker
-            </p>
-          </div>
-        </aside>
+        <AnimatedHeroIntro />
+        <AnimatedResumeSnapshot />
       </section>
 
-      <section id="projects" className="border-y border-[#d9ded2] bg-white">
+      <section
+        id="projects"
+        className="relative z-10 border-y border-[#d9ded2] bg-white/82 backdrop-blur-xl"
+      >
         <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
           <div className="mb-9 flex flex-col justify-between gap-4 md:flex-row md:items-end">
             <div>
@@ -228,8 +215,9 @@ export default function Home() {
               </h2>
             </div>
             <p className="max-w-lg text-sm leading-6 text-[#566153]">
-              Projects from the resume, shaped as portfolio case studies with the
-              problem space, system architecture, and engineering role clearly visible.
+              Projects from the resume, shaped as portfolio case studies with
+              the problem space, system architecture, and engineering role
+              clearly visible.
             </p>
           </div>
 
@@ -237,76 +225,155 @@ export default function Home() {
         </div>
       </section>
 
-      <section id="experience" className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
-        <div className="mb-9">
-          <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#7a5349]">
-            Experience
-          </p>
-          <h2 className="mt-3 text-3xl font-semibold text-[#111711] sm:text-4xl">
-            Product work and cloud research
-          </h2>
-        </div>
-        <div className="grid gap-5 lg:grid-cols-2">
-          {experience.map((item) => (
-            <article key={item.role} className="border border-[#d9ded2] bg-white p-6">
-              <p className="text-sm font-semibold text-[#1f6f5b]">{item.meta}</p>
-              <h3 className="mt-3 text-2xl font-semibold">{item.role}</h3>
-              <p className="mt-1 text-sm font-medium text-[#7a5349]">{item.organization}</p>
-              <p className="mt-4 text-sm leading-6 text-[#566153]">{item.summary}</p>
-              <ul className="mt-5 space-y-2 text-sm leading-6 text-[#3f493d]">
-                {item.points.map((point) => (
-                  <li key={point} className="border-l-2 border-[#cbd8c2] pl-3">
-                    {point}
-                  </li>
-                ))}
-              </ul>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section id="skills" className="border-y border-[#d9ded2] bg-white">
-        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-16 sm:px-8 lg:grid-cols-[0.75fr_1.25fr] lg:py-20">
-          <div>
+      <section id="experience" className="relative z-10 bg-[#f5f6f0]">
+        <div className="mx-auto max-w-7xl px-5 py-16 sm:px-8 lg:py-20">
+          <div className="mb-9">
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#7a5349]">
-              Skills
+              Experience
             </p>
             <h2 className="mt-3 text-3xl font-semibold text-[#111711] sm:text-4xl">
-              Technologies I use
+              Product work and cloud research
             </h2>
-            <div className="mt-7 space-y-3">
-              {certifications.map((certification) => (
-                <p key={certification} className="border border-[#d9ded2] bg-[#f5f6f0] p-4 text-sm font-medium">
-                  {certification}
-                </p>
-              ))}
-            </div>
           </div>
-          <div className="grid gap-4 md:grid-cols-3">
-            {skillGroups.map((group) => (
-              <article key={group.title} className="border border-[#d9ded2] p-5">
-                <h3 className="text-lg font-semibold">{group.title}</h3>
-                <div className="mt-5 flex flex-wrap gap-2">
-                  {group.items.map((item) => (
-                    <span key={item} className="border border-[#d9ded2] bg-[#f5f6f0] px-2.5 py-1 text-xs text-[#4f5a4d]">
-                      {item}
-                    </span>
+          <div className="grid gap-5 lg:grid-cols-2">
+            {experience.map((item) => (
+              <article
+                key={item.role}
+                className="border border-white/60 bg-white/78 p-6 shadow-[0_1rem_3rem_-2rem_rgba(24,33,27,0.35)] backdrop-blur-xl"
+              >
+                <p className="text-sm font-semibold text-[#1f6f5b]">
+                  {item.meta}
+                </p>
+                <h3 className="mt-3 text-2xl font-semibold">{item.role}</h3>
+                <p className="mt-1 text-sm font-medium text-[#7a5349]">
+                  {item.organization}
+                </p>
+                <p className="mt-4 text-sm leading-6 text-[#566153]">
+                  {item.summary}
+                </p>
+                <ul className="mt-5 space-y-2 text-sm leading-6 text-[#3f493d]">
+                  {item.points.map((point) => (
+                    <li
+                      key={point}
+                      className="border-l-2 border-[#cbd8c2] pl-3"
+                    >
+                      {point}
+                    </li>
                   ))}
-                </div>
+                </ul>
               </article>
             ))}
           </div>
         </div>
       </section>
 
-      <section id="contact" className="bg-[#18211b] text-white">
+      <section
+        id="skills"
+        className="relative z-10 border-y border-[#d9ded2] bg-white/84 backdrop-blur-xl"
+      >
+        <div className="mx-auto grid max-w-7xl gap-12 px-5 py-16 sm:px-8 lg:grid-cols-2 lg:py-20">
+          <div className="min-w-0">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#7a5349]">
+              Credentials
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#111711] sm:text-4xl">
+              AWS certifications with verifiable IDs
+            </h2>
+            <p className="mt-4 text-sm leading-6 text-[#566153]">
+              Cloud certifications are a core part of my resume, so each
+              credential links directly to the AWS verification page with its
+              validation number visible.
+            </p>
+            <div className="mt-7 space-y-4">
+              {certifications.map((certification) => (
+                <a
+                  key={certification.validationNumber}
+                  className="group block border border-[#d7a85f] bg-[#fff8eb] p-5 text-[#18211b] shadow-[0_14px_38px_rgba(122,83,73,0.08)] transition hover:-translate-y-1 hover:border-[#f59e0b] hover:bg-white hover:shadow-[0_18px_48px_rgba(122,83,73,0.14)]"
+                  href={certification.href}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  aria-label={`Verify ${certification.name} on AWS`}
+                >
+                  <div className="flex items-start justify-between gap-4">
+                    <div>
+                      <span className="text-xs font-bold uppercase tracking-[0.16em] text-[#b46909]">
+                        AWS Certified
+                      </span>
+                      <h3 className="mt-2 text-lg font-semibold leading-6">
+                        {certification.name}
+                      </h3>
+                    </div>
+                    <span className="shrink-0 border border-[#f1c27b] bg-white px-2.5 py-1 text-xs font-bold text-[#8a4f08]">
+                      Verify
+                    </span>
+                  </div>
+                  <p className="mt-4 text-sm font-medium text-[#566153]">
+                    Valid: {certification.period}
+                  </p>
+                  <div className="mt-4 border-t border-[#efd8ae] pt-4">
+                    <p className="text-xs font-bold uppercase tracking-[0.12em] text-[#7a5349]">
+                      Validation number
+                    </p>
+                    <p className="mt-1 break-all font-mono text-sm text-[#111711]">
+                      {certification.validationNumber}
+                    </p>
+                  </div>
+                  <span className="mt-4 inline-flex text-sm font-semibold text-[#b46909] transition group-hover:text-[#7a3500]">
+                    Open AWS verification page
+                  </span>
+                </a>
+              ))}
+            </div>
+          </div>
+          <div className="min-w-0">
+            <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#7a5349]">
+              Skills
+            </p>
+            <h2 className="mt-3 text-3xl font-semibold text-[#111711] sm:text-4xl">
+              Technologies I use across the stack
+            </h2>
+            <p className="mt-4 text-sm leading-6 text-[#566153]">
+              A practical toolkit for building responsive products, backend
+              services, AI integrations, and cloud-ready development workflows.
+            </p>
+            <div className="mt-7 grid gap-4 sm:grid-cols-2">
+              {skillGroups.map((group) => (
+                <article
+                  key={group.title}
+                  className="border border-[#d9ded2] bg-white/70 p-6 shadow-[0_14px_38px_rgba(24,33,27,0.06)] sm:last:col-span-2"
+                >
+                  <div className="flex items-center justify-between gap-4">
+                    <h3 className="text-2xl font-semibold">{group.title}</h3>
+                    <span className="border border-[#d9ded2] bg-[#f5f6f0] px-2.5 py-1 text-xs font-bold text-[#566153]">
+                      {group.items.length}
+                    </span>
+                  </div>
+                  <div className="mt-6 flex flex-wrap gap-3">
+                    {group.items.map((item) => (
+                      <span
+                        key={item}
+                        className="border border-[#cfd8c8] bg-[#f5f6f0] px-3.5 py-2 text-sm font-medium text-[#3f4a3c]"
+                      >
+                        {item}
+                      </span>
+                    ))}
+                  </div>
+                </article>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section id="contact" className="relative z-10 bg-[#18211b] text-white">
         <div className="mx-auto flex max-w-7xl flex-col gap-8 px-5 py-14 sm:px-8 lg:flex-row lg:items-center lg:justify-between">
           <div>
             <p className="text-sm font-bold uppercase tracking-[0.18em] text-[#a8cdb8]">
               Contact
             </p>
             <h2 className="mt-3 max-w-3xl text-3xl font-semibold sm:text-4xl">
-              Open to internships, junior developer roles, and project collaborations.
+              Open to internships, junior developer roles, and project
+              collaborations.
             </h2>
           </div>
           <div className="grid gap-3 sm:grid-cols-2">
@@ -316,12 +383,18 @@ export default function Home() {
                 className="border border-white/20 px-4 py-3 transition hover:border-white hover:bg-white hover:text-[#18211b]"
                 href={link.href}
                 target={link.href.startsWith("http") ? "_blank" : undefined}
-                rel={link.href.startsWith("http") ? "noopener noreferrer" : undefined}
+                rel={
+                  link.href.startsWith("http")
+                    ? "noopener noreferrer"
+                    : undefined
+                }
               >
                 <span className="block text-xs font-semibold uppercase tracking-[0.12em] text-[#a8cdb8]">
                   {link.label}
                 </span>
-                <span className="mt-1 block text-sm font-semibold">{link.value}</span>
+                <span className="mt-1 block text-sm font-semibold">
+                  {link.value}
+                </span>
               </a>
             ))}
           </div>

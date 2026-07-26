@@ -87,10 +87,10 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
             <GlowCard
               customSize
               glowColor={project.glowColor}
-              className="h-[560px] w-full border-[#d9ded2] bg-white transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_1.5rem_3rem_-1.5rem_rgba(24,33,27,0.55)] group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1f6f5b]"
+              className="h-[560px] w-full border-white/60 bg-white/80 transition duration-300 group-hover:-translate-y-1 group-hover:shadow-[0_1.5rem_3rem_-1.5rem_rgba(24,33,27,0.55)] group-focus-visible:outline group-focus-visible:outline-2 group-focus-visible:outline-offset-4 group-focus-visible:outline-[#1f6f5b]"
             >
               <div className="relative z-10 flex h-full flex-col">
-                <div className="flex min-h-40 flex-col justify-between bg-[#eef2e8] p-5">
+                <div className="flex min-h-40 flex-col justify-between bg-[#eef2e8]/82 p-5 backdrop-blur">
                   <div className="flex items-start justify-between gap-4">
                     <p className="text-sm font-semibold text-[#1f6f5b]">{project.label}</p>
                     <span className="text-sm font-bold uppercase tracking-[0.14em] text-[#7a5349]">
@@ -107,14 +107,11 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                 <div className="flex flex-1 flex-col pt-6">
                   <h3 className="text-2xl font-semibold text-[#111711]">{project.title}</h3>
                   <p className="mt-3 text-sm leading-6 text-[#566153]">{project.description}</p>
-
-                  <ul className="mt-5 space-y-2 text-sm leading-6 text-[#3f493d]">
-                    {project.highlights.slice(0, 2).map((item) => (
-                      <li key={item} className="border-l-2 border-[#cbd8c2] pl-3">
-                        {item}
-                      </li>
-                    ))}
-                  </ul>
+                  {project.highlights[0] ? (
+                    <p className="mt-5 border-l-2 border-[#a8cdb8] bg-[#f5f6f0] px-3 py-2 text-sm font-medium leading-6 text-[#2f3d31]">
+                      {project.highlights[0]}
+                    </p>
+                  ) : null}
 
                   <div className="mt-auto pt-6">
                     <div className="flex flex-wrap gap-2">
