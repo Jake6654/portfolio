@@ -115,7 +115,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
   const inlineStyles: GlowStyle = {
     "--base": base,
     "--spread": spread,
-    "--radius": "6",
+    "--radius": "8",
     "--border": "1",
     "--backdrop": "hsl(96 20% 96% / 0.9)",
     "--backup-border": "hsl(92 16% 84%)",
@@ -158,6 +158,7 @@ const GlowCard: React.FC<GlowCardProps> = ({
           relative
           grid
           overflow-hidden
+          rounded-lg
           p-5
           shadow-[0_1rem_2rem_-1rem_rgba(24,33,27,0.45)]
           backdrop-blur-[5px]
