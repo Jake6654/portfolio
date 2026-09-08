@@ -19,18 +19,6 @@ type ProjectCarouselProps = {
   projects: Project[];
 };
 
-const getLinkLabel = (href: string) => {
-  if (href.startsWith("#")) {
-    return "portfolio section";
-  }
-
-  try {
-    return new URL(href).hostname.replace("www.", "");
-  } catch {
-    return href;
-  }
-};
-
 export function ProjectCarousel({ projects }: ProjectCarouselProps) {
   const scrollRef = useRef<HTMLDivElement>(null);
   const [isDragging, setIsDragging] = useState(false);
@@ -45,7 +33,6 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
       x: event.clientX,
       moved: false,
     };
-    scrollRef.current.setPointerCapture(event.pointerId);
   };
 
   const handlePointerMove = (event: PointerEvent<HTMLDivElement>) => {
@@ -53,6 +40,9 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
 
     const distance = event.clientX - dragState.current.x;
     if (Math.abs(distance) > 6) {
+      if (!dragState.current.moved) {
+        scrollRef.current.setPointerCapture(event.pointerId);
+      }
       dragState.current.moved = true;
     }
     scrollRef.current.scrollLeft = dragState.current.left - distance;
@@ -60,7 +50,9 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
 
   const handlePointerUp = (event: PointerEvent<HTMLDivElement>) => {
     setIsDragging(false);
-    scrollRef.current?.releasePointerCapture(event.pointerId);
+    if (scrollRef.current?.hasPointerCapture(event.pointerId)) {
+      scrollRef.current.releasePointerCapture(event.pointerId);
+    }
   };
 
   const preventClickAfterDrag = (event: MouseEvent<HTMLAnchorElement>) => {
@@ -162,67 +154,6 @@ export function ProjectCarousel({ projects }: ProjectCarouselProps) {
                   </div>
                 </div>
 
-                <div className="pointer-events-none absolute inset-4 z-20 flex opacity-0 transition-opacity duration-300 group-hover:opacity-100 group-hover:delay-[5000ms]">
-                  <div className="flex w-full flex-col overflow-hidden rounded-lg border border-[#d9ded2] bg-[#fbfcf7]/96 text-[#18211b] shadow-[0_1.5rem_3rem_-1rem_rgba(24,33,27,0.45)] backdrop-blur-xl">
-                    <div className="flex h-10 items-center gap-2 border-b border-[#d9ded2] bg-[#eef2e8] px-4">
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#d86d5a]" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#d7a85f]" />
-                      <span className="h-2.5 w-2.5 rounded-full bg-[#6fa981]" />
-                      <span className="ml-2 truncate text-xs font-semibold text-[#566153]">
-                        {getLinkLabel(project.href)}
-                      </span>
-                    </div>
-                    {project.thumbnail ? (
-                      <div className="relative h-28 w-full border-b border-[#d9ded2]">
-                        <Image
-                          src={project.thumbnail}
-                          alt=""
-                          fill
-                          sizes="(min-width: 1024px) 33vw, (min-width: 640px) 48vw, 82vw"
-                          className="object-cover"
-                        />
-                      </div>
-                    ) : null}
-                    <div className="flex flex-1 flex-col p-5">
-                      <div className="flex items-start justify-between gap-4">
-                        <div>
-                          <p className="text-xs font-bold uppercase tracking-[0.16em] text-[#7a5349]">
-                            Project preview
-                          </p>
-                          <h4 className="mt-2 text-2xl font-semibold leading-tight">
-                            {project.title}
-                          </h4>
-                        </div>
-                        <span className="shrink-0 border border-[#cfd8c8] bg-white px-2.5 py-1 text-xs font-bold text-[#3f4a3c]">
-                          0{index + 1}
-                        </span>
-                      </div>
-                      <p className="mt-4 line-clamp-3 text-sm leading-6 text-[#566153]">
-                        {project.description}
-                      </p>
-                      {project.highlights[0] ? (
-                        <p className="mt-4 border-l-2 border-[#1f6f5b] bg-[#eef2e8] px-3 py-2 text-sm font-medium leading-6 text-[#2f3d31]">
-                          {project.highlights[0]}
-                        </p>
-                      ) : null}
-                      <div className="mt-auto">
-                        <div className="mb-4 h-1 overflow-hidden bg-[#d9ded2]">
-                          <div className="h-full w-0 bg-[#1f6f5b] transition-[width] duration-[5000ms] group-hover:w-full" />
-                        </div>
-                        <div className="flex flex-wrap gap-2">
-                          {project.stack.slice(0, 5).map((item) => (
-                            <span
-                              key={item}
-                              className="border border-[#d9ded2] bg-white px-2.5 py-1 text-xs text-[#4f5a4d]"
-                            >
-                              {item}
-                            </span>
-                          ))}
-                        </div>
-                      </div>
-                    </div>
-                  </div>
-                </div>
               </div>
             </GlowCard>
           </a>

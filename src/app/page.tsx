@@ -10,9 +10,19 @@ const projects = [
     description:
       "OpsLens is an AI agent-based operations analysis tool that monitors production errors in real time. It helps identify where the issue happened, analyze the possible causes, and suggest what actions to take next.",
     highlights: ["Multi-agent log analysis with fix recommendations."],
+    architecture: [
+      "A Next.js dashboard calls the Spring Boot API, which ingests authenticated logs and stores incidents, reports, patch suggestions, and test runs in PostgreSQL.",
+      "A FastAPI orchestrator uses LangGraph to analyze incidents, search GitHub or a mounted workspace, and generate validated patch suggestions.",
+      "Generated diffs pass through git apply checks and isolated test execution before a safety gate can mark them ready for human-reviewed pull requests.",
+    ],
+    role: [
+      "Designed the three-service architecture and built the complete incident-to-patch workflow around a real SketchMyDay integration.",
+      "Implemented log ingestion, automatic incident creation, AI reports, related-code search, and the operations dashboard.",
+      "Built the patch-validation and test safety gates so generated code is never promoted without explicit checks and human review.",
+    ],
     stack: ["Spring Boot", "FastAPI", "LangGraph", "Docker", "GitHub Actions"],
     thumbnail: "/project-thumbnails/opslens.png",
-    href: "https://github.com/Jake6654",
+    href: "https://github.com/Jake6654/opslens",
     glowColor: "green" as const,
   },
   {
@@ -23,9 +33,19 @@ const projects = [
     highlights: [
       "End-to-end AI journaling system with a separate GPU-backed FastAPI service.",
     ],
+    architecture: [
+      "The Next.js frontend owns Google OAuth through Supabase, dated diary editing, the diary board, calendar views, and AI job polling.",
+      "Spring Boot persists diary entries in PostgreSQL and provides the REST contract between the browser and the AI service.",
+      "FastAPI runs asynchronous generation jobs with Redis, uses OpenAI for structured prompts, and routes image work to Replicate or a self-hosted GPU service.",
+    ],
+    role: [
+      "Built the product end to end across the Next.js client, Spring Boot API, FastAPI orchestration service, and image-generation service.",
+      "Designed the pending-to-processing-to-completed job lifecycle and the polling contract used for long-running illustration generation.",
+      "Integrated Supabase authentication, diary persistence, structured AI output, Docker orchestration, and configurable image providers.",
+    ],
     stack: ["Next.js", "Spring Boot", "Supabase", "FastAPI", "GPU VM"],
     thumbnail: "/project-thumbnails/sketch-my-day.png",
-    href: "https://github.com/Jake6654",
+    href: "https://sketch-my-day.vercel.app/",
     glowColor: "blue" as const,
   },
   {
@@ -36,9 +56,19 @@ const projects = [
     highlights: [
       "Built safe-route generation and chat features within a short hackathon timeframe.",
     ],
+    architecture: [
+      "A Next.js App Router frontend combines authenticated and protected screens with Supabase-backed user verification.",
+      "Google Maps and Directions power the map views used to visualize nearby risks and support safer route planning.",
+      "Walk Together posts, matching screens, and chat components connect the route-planning experience with group walking.",
+    ],
+    role: [
+      "Built the responsive landing experience and navigation that introduce the product's safety-first workflow.",
+      "Integrated Google Maps into the application and contributed the map-based interface used in the protected experience.",
+      "Worked with the team to connect the frontend flows into a cohesive hackathon demo under a short delivery timeline.",
+    ],
     stack: ["Next.js", "React", "TypeScript", "Tailwind CSS", "Google Maps"],
     thumbnail: "/project-thumbnails/hoo-paths.png",
-    href: "https://github.com/Jake6654",
+    href: "https://devpost.com/software/hoos-path",
     glowColor: "orange" as const,
   },
   {
@@ -49,9 +79,19 @@ const projects = [
     highlights: [
       "Combined map-based travel history with AI recommendations and chatbot support.",
     ],
+    architecture: [
+      "A React client renders travel history and Google Places map data while consuming structured JSON from the backend REST API.",
+      "Spring Boot separates authentication, visited-city, recommendation, and chat endpoints, with MongoDB storing users and travel records.",
+      "Spring AI connects the backend to OpenAI for personalized destination recommendations and multi-turn travel conversations.",
+    ],
+    role: [
+      "Owned the Spring Boot backend and designed the REST contracts used by the team's React frontend.",
+      "Implemented the visited-city data model, MongoDB repositories, and JWT/OAuth2 authentication flow.",
+      "Built the Spring AI recommendation and travel-chat services and integrated them with the application's controllers.",
+    ],
     stack: ["Spring Boot", "Spring AI", "MongoDB", "React", "Google Maps"],
     thumbnail: "/project-thumbnails/travel-log.png",
-    href: "https://github.com/Jake6654",
+    href: "https://devpost.com/software/travel-log-7yckum",
     glowColor: "purple" as const,
   },
   {
@@ -63,6 +103,16 @@ const projects = [
       "Designed a responsive landing page around resume-backed project evidence.",
       "Built with Next.js, TypeScript, and Tailwind CSS.",
       "Structured sections for scanning by recruiters and collaborators.",
+    ],
+    architecture: [
+      "A statically rendered Next.js App Router page keeps the portfolio fast while client components provide motion and interaction where needed.",
+      "Reusable hero, resume, carousel, glow-card, and animated-background components keep visual responsibilities isolated.",
+      "Project data is centralized on the page and passed into a responsive, horizontally draggable case-study carousel.",
+    ],
+    role: [
+      "Designed and implemented the full visual system, responsive layout, content hierarchy, and interaction model.",
+      "Created reusable TypeScript components for animated sections, project cards, and accessible case-study details.",
+      "Optimized the site for recruiter-friendly scanning across projects, experience, skills, credentials, and contact paths.",
     ],
     stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
     href: "#top",
