@@ -94,30 +94,6 @@ const projects = [
     href: "https://devpost.com/software/travel-log-7yckum",
     glowColor: "purple" as const,
   },
-  {
-    title: "Portfolio Website",
-    label: "Personal Site",
-    description:
-      "A clean developer portfolio built to present full-stack projects, cloud experience, certifications, and contact paths clearly.",
-    highlights: [
-      "Designed a responsive landing page around resume-backed project evidence.",
-      "Built with Next.js, TypeScript, and Tailwind CSS.",
-      "Structured sections for scanning by recruiters and collaborators.",
-    ],
-    architecture: [
-      "A statically rendered Next.js App Router page keeps the portfolio fast while client components provide motion and interaction where needed.",
-      "Reusable hero, resume, carousel, glow-card, and animated-background components keep visual responsibilities isolated.",
-      "Project data is centralized on the page and passed into a responsive, horizontally draggable case-study carousel.",
-    ],
-    role: [
-      "Designed and implemented the full visual system, responsive layout, content hierarchy, and interaction model.",
-      "Created reusable TypeScript components for animated sections, project cards, and accessible case-study details.",
-      "Optimized the site for recruiter-friendly scanning across projects, experience, skills, credentials, and contact paths.",
-    ],
-    stack: ["Next.js", "TypeScript", "Tailwind CSS", "Vercel"],
-    href: "#top",
-    glowColor: "red" as const,
-  },
 ];
 
 const experience = [
@@ -132,6 +108,7 @@ const experience = [
       "Integrated authenticated backend APIs with error handling and consistent client-side data.",
       "Focused on maintainability, responsive layouts, and production-ready UI behavior.",
     ],
+    links: [],
   },
   {
     role: "Research Assistant",
@@ -143,6 +120,16 @@ const experience = [
       "Focused on elastic scaling for LLM workloads to reduce idle GPU usage and infrastructure cost.",
       "Experimenting with deployment pipelines using Docker and Ray.",
       "Evaluating performance trade-offs across different GPU cloud environments.",
+    ],
+    links: [
+      {
+        label: "Graduation thesis",
+        href: "https://libraetd.lib.virginia.edu/public_view/oid-d7pl7pvp0efrfq5tbfpg",
+      },
+      {
+        label: "Research repository",
+        href: "https://github.com/Jake6654/serverlessLLM_report",
+      },
     ],
   },
 ];
@@ -317,6 +304,21 @@ export default function Home() {
                     </li>
                   ))}
                 </ul>
+                {item.links.length > 0 ? (
+                  <div className="mt-5 flex flex-wrap gap-x-4 gap-y-2 border-t border-[#d9ded2] pt-4">
+                    {item.links.map((link) => (
+                      <a
+                        key={link.href}
+                        href={link.href}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-xs font-semibold text-[#1f6f5b] underline decoration-[#1f6f5b]/35 underline-offset-4 transition hover:decoration-[#1f6f5b]"
+                      >
+                        {link.label} ↗
+                      </a>
+                    ))}
+                  </div>
+                ) : null}
               </article>
             ))}
           </div>
